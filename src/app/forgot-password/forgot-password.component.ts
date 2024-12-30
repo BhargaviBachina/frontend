@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';  // Import HttpClient
 import { Router, RouterModule } from '@angular/router';  // Import Router
 import { FormsModule } from '@angular/forms';  // Import FormsModule
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',
   styleUrls: ['./forgot-password.component.css'],
-  imports: [FormsModule, CommonModule, RouterModule],
+  imports: [FormsModule, CommonModule, RouterModule, HttpClientModule],
 })
 export class ForgotPasswordComponent {
   email: string = '';

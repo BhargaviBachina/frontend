@@ -3,13 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-reset-password',
   standalone: true,
   templateUrl: './reset-password.component.html',
   styleUrls: ['./reset-password.component.css'],
-  imports: [FormsModule, CommonModule] // Include FormsModule for form validation
+  imports: [FormsModule, CommonModule, HttpClientModule] // Include FormsModule for form validation
 })
 export class ResetPasswordComponent {
   email: string = '';  // Email, possibly from URL or previous component
