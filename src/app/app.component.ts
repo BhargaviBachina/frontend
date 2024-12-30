@@ -6,9 +6,9 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterModule],  // Ensure required modules and components are imported
-  template: `<router-outlet></router-outlet>`,  // Displays routed components
-  styleUrls: ['./app.component.css'],  // Link to the component's styles
+  imports: [CommonModule, RouterModule],  
+  template: `<router-outlet></router-outlet>`,  
+  styleUrls: ['./app.component.css'],  
 })
 export class AppComponent {
   title = 'your-app';

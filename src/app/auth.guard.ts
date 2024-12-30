@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { jwtDecode } from 'jwt-decode';  // Corrected import
 
 @Injectable({
   providedIn: 'root',
@@ -10,14 +11,27 @@ export class AuthGuard implements CanActivate {
 
   canActivate(): Observable<boolean> | Promise<boolean> | boolean {
     const token = localStorage.getItem('token');
-    
-    // If there is no token, redirect to login page
+
     if (!token) {
       this.router.navigate(['/login']);
       return false;
     }
 
-    // If token exists, grant access to the route
-    return true;
+    try {
+      const decodedToken: any = jwtDecode(token);  
+      const currentTime = Math.floor(Date.now() / 1000);  
+
+      // If token is expired, redirect to login page
+      if (decodedToken.exp < currentTime) {
+        localStorage.removeItem("token");
+        this.router.navigate(['/login']);
+        return false;
+      }
+
+      return true;  // Token is valid
+    } catch (error) {
+      this.router.navigate(['/login']);
+      return false;
+    }
   }
 }

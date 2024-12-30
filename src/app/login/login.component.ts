@@ -30,7 +30,6 @@ export class LoginComponent {
         console.log('Login successful:', response);
         // Save token to localStorage or sessionStorage
         localStorage.setItem('token', response.token);
-
         // Redirect to the dashboard after a successful login
         setTimeout(() => {
           this.isLoading = false;  // Set loading state to false
